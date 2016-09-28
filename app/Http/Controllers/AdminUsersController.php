@@ -47,11 +47,19 @@ class AdminUsersController extends Controller
      */
     public function store(UsersRequest $request)
     {
-        // User::create($request->all());
+        if(trim($request->password) == ''){
+            
+            $input = $request->except('password');
+            
+        }
+        else {
+             
+             $input = $request->all();
+             $input['password'] = bcrypt($request->password);
+        }
         
-        // return redirect()->route('admin.users.index');
         
-        $input = $request->all();
+       
         
         if($file = $request->file('photo_id')){
             
@@ -65,11 +73,11 @@ class AdminUsersController extends Controller
             
         }
         
-        $input['password'] = bcrypt($request->password);
+       
         
         User::create($input);
         
-        return "Done!";
+        return redirect()->route('admin.users.index');
     }
 
     /**
@@ -91,7 +99,10 @@ class AdminUsersController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::findOrFail($id);
+        $roles = Role::lists('name', 'id')->all();
+        
+        return view('admin.users.edit', compact('user','roles'));
     }
 
     /**
@@ -103,7 +114,34 @@ class AdminUsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::findOrFail($id);
+        
+        if(trim($request->password) == ''){
+            
+            $input = $request->except('password');
+            
+        }
+        else {
+             
+             $input = $request->all();
+             $input['password'] = bcrypt($request->password);
+        }
+        
+        if($file = $request->file('photo_id')){
+            
+            $name = time() . $file->getClientOriginalName();
+            
+            $file->move('images', $name);
+            
+            $photo = Photo::create(['file'=>$name]);
+            
+            $input['photo_id'] = $photo->id;
+            
+        }
+        
+        $user->update($input);
+        
+        return redirect()->route('admin.users.index');
     }
 
     /**
@@ -114,6 +152,11 @@ class AdminUsersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        
+        $user = User::findOrFail($id);
+        
+        $user->delete();
+        
+        return redirect()->route('admin.users.index');
     }
 }
