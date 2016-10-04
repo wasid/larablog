@@ -2,6 +2,8 @@
 
 @section('content')
 
+@include('includes.form_error')
+
 <h1>Users</h1>
   <table class="table">
     <thead>

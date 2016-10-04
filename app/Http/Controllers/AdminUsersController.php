@@ -8,6 +8,8 @@ use App\Http\Requests;
 
 use App\Http\Requests\UsersRequest;
 
+use Illuminate\Support\Facades\Session;
+
 use App\User;
 
 use App\Role;
@@ -77,6 +79,8 @@ class AdminUsersController extends Controller
         
         User::create($input);
         
+        Session::flash('alert-success', 'User Successfully Created!');
+        
         return redirect()->route('admin.users.index');
     }
 
@@ -141,6 +145,8 @@ class AdminUsersController extends Controller
         
         $user->update($input);
         
+        Session::flash('alert-info', 'User Successfully Updated');
+        
         return redirect()->route('admin.users.index');
     }
 
@@ -155,8 +161,14 @@ class AdminUsersController extends Controller
         
         $user = User::findOrFail($id);
         
+        unlink(public_path() . $user->photo->file);
+        
         $user->delete();
         
+        Session::flash('alert-danger', 'Successfully Deleted User');
+        
         return redirect()->route('admin.users.index');
+        
+
     }
 }
