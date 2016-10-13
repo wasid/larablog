@@ -141,4 +141,13 @@ class AdminPostsController extends Controller
         
         return redirect()->route('admin.posts.index');
     }
+    
+    public function post($id)
+    {
+        
+      $posts = Post::findOrFail($id);
+      
+      return view('admin.posts', compact('posts'));
+        
+    }
 }

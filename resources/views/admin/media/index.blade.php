@@ -29,7 +29,7 @@
                 
                 <div class="form-goup">
                     
-                    {!! Form::submit('Delete Media', ['class' => 'btn btn-danger']); !!}
+                    {!! Form::submit('Delete Media', ['class' => 'btn btn-danger  col-sm-6']); !!}
                     
                 </div>
                 

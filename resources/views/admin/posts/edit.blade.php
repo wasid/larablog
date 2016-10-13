@@ -44,7 +44,7 @@
             
         </div>
         
-          <div class="form-goup">
+            <div class="form-goup">
                 
                 {!! Form::submit('Update Post', ['class' => 'btn btn-primary  col-sm-6']); !!}
                 
