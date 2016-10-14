@@ -7,27 +7,27 @@
                 <!-- Blog Post -->
 
                 <!-- Title -->
-                <h1>{{ $posts->title }}</h1>
+                <h1>{{ $post->title }}</h1>
 
                 <!-- Author -->
                 <p class="lead">
-                    by <a href="#">{{ $posts->user->name }}</a>
+                    by <a href="#">{{ $post->user->name }}</a>
                 </p>
 
                 <hr>
 
                 <!-- Date/Time -->
-                <p><span class="glyphicon glyphicon-time"></span> Posted on {{$posts->created_at->diffForHumans()}}</p>
+                <p><span class="glyphicon glyphicon-time"></span> Posted on {{$post->created_at->diffForHumans()}}</p>
 
                 <hr>
 
                 <!-- Preview Image -->
-                <img class="img-responsive" src="http://placehold.it/900x300" alt="">
+                <img class="img-responsive" height="900" width="300" src="{{$post->photo ? $post->photo->file : "http://placehold.it/900x300"}}"></img>
 
                 <hr>
 
                 <!-- Post Content -->
-                <p>{{ $posts->body }}</p>
+                <p>{{ $post->body }}</p>
                 <hr>
 
                 <!-- Blog Comments -->
@@ -35,12 +35,25 @@
                 <!-- Comments Form -->
                 <div class="well">
                     <h4>Leave a Comment:</h4>
-                    <form role="form">
-                        <div class="form-group">
-                            <textarea class="form-control" rows="3"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </form>
+                     {!! Form::open(['method' => 'post', 'action' => 'PostCommentsController@store']) !!}
+    
+                    <input type="hidden" name="post_id" value="{{ $post->id }}"/>
+  
+                    <div class="form-group">
+                        
+                        {!! Form::label('body', 'Body:'); !!}
+                        
+                        {!! Form::textarea('body', null, ['class' => 'form-control', 'rows' => '3']); !!}
+                        
+                    </div>
+                    
+                    <div class="form-goup">
+                        
+                        {!! Form::submit('Submit Comment', ['class' => 'btn btn-primary']); !!}
+                        
+                    </div>
+                    
+                    {!! Form::close() !!}
                 </div>
 
                 <hr>

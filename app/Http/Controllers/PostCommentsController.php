@@ -6,6 +6,12 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
+use Illuminate\Support\Facades\Session;
+
+use App\Comment;
+
+use Auth;
+
 class PostCommentsController extends Controller
 {
     /**
@@ -15,7 +21,9 @@ class PostCommentsController extends Controller
      */
     public function index()
     {
-        return view('admin.comments.index');
+        $comments = Comment::all();
+        
+        return view('admin.comments.index', compact('comments'));
     }
 
     /**
@@ -36,7 +44,25 @@ class PostCommentsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = Auth::user();
+        
+        $input = [
+            
+            'post_id' => $request->post_id,
+            'author' => $user->name,
+            'email' => $user->email,
+            'photo' => $user->photo->file,
+            'body' => $request->body
+            
+            ];
+        
+        Comment::create($input);
+        
+        Session::flash('alert-info', 'Comment Successfully submitted and waiting for Admin permission!');
+        
+        return redirect()->back();
+        
+        
     }
 
     /**
@@ -70,7 +96,11 @@ class PostCommentsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Comment::findOrFail($id)->update($request->all());
+        
+        Session::flash('alert-info', 'Comment Successfully Updated!');
+        
+        return redirect()->back();
     }
 
     /**
@@ -81,6 +111,10 @@ class PostCommentsController extends Controller
      */
     public function destroy($id)
     {
-        //
+         Comment::findOrFail($id)->delete();
+         
+         Session::flash('alert-danger', 'Comment Successfully Deleted!');
+        
+        return redirect()->back();
     }
 }

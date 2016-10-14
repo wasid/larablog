@@ -7,7 +7,7 @@
 <h1>Edit Posts</h1>
     <div class="col-sm-3">
         
-        <img height="200" src="{{$posts->photo ? $posts->photo->file : "http://placehold.it/200x200"}}"></img>
+        <img height="150" src="{{$posts->photo ? $posts->photo->file : "http://placehold.it/200x200"}}"></img>
         
     </div>
 
