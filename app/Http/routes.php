@@ -22,7 +22,7 @@ Route::get('/home', 'HomeController@index');
 Route::get('admin/post/{id}', ['uses'=>'AdminPostsController@post', 'as'=>'post']);
 
 
-route::group(['middleware'=>'admin'], function(){
+Route::group(['middleware'=>'admin'], function(){
     
     Route::get('/admin', function(){
     
@@ -45,4 +45,8 @@ route::group(['middleware'=>'admin'], function(){
     
 });
 
+Route::group(['middleware'=>'auth'], function(){
+    
+    Route::post('comment/replies', ['uses'=>'CommentRepliesController@createReply', 'as'=>'reply']);
 
+});

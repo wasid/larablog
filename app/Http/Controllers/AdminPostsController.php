@@ -11,6 +11,7 @@ use App\Http\Requests\PostsCreateRequest;
 use Illuminate\Support\Facades\Session;
 
 use App\Post;
+use App\Comment;
 use App\Photo;
 use App\Category;
 use Auth;
@@ -78,7 +79,7 @@ class AdminPostsController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**
@@ -145,9 +146,11 @@ class AdminPostsController extends Controller
     public function post($id)
     {
         
-      $post = Post::findOrFail($id);
+        $post = Post::findOrFail($id);
       
-      return view('admin.posts', compact('post'));
+        $comments = $post->comments()->whereIsActive(1)->get();
+
+        return view('admin.posts', compact('post', 'comments'));
         
     }
 }

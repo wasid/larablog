@@ -66,12 +66,12 @@
             <!-- Blog Post Content Column -->
             <div class="col-lg-8">
 
-            @yield('content')
+                @yield('content')
 
             </div>
 
             <!-- Blog Sidebar Widgets Column -->
-            <div class="col-md-4">
+            <div class="col-lg-4">
 
                 <!-- Blog Search Well -->
                 <div class="well">
@@ -136,7 +136,7 @@
         <footer>
             <div class="row">
                 <div class="col-lg-12">
-                    <p>Copyright &copy; Your Website 2014</p>
+                    <p>Copyright &copy; Your Website 2016</p>
                 </div>
             </div>
             <!-- /.row -->
@@ -147,6 +147,8 @@
 
     <!-- jQuery -->
     <script src="{{asset('js/libs.js')}}"></script>
+    
+     @yield('scripts')
 
 </body>
 

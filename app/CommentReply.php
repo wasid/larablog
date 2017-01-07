@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class CommentReply extends Model
 {
-    protected $fillable = ['commment_id', 'is_active', 'author', 'email', 'body'];
+    protected $fillable = ['comment_id', 'is_active', 'author', 'photo', 'email', 'body'];
     
-    public function commment(){
+    public function comment(){
         
         return $this->belongsTo('App\Comment');
         

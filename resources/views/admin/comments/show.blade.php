@@ -6,36 +6,30 @@
 
 
 
-@if(count($comments) > 0)
-<h1>Comments</h1>
+@if($comments)
+<h1>Comment</h1>
  <table class="table">
     <thead>
       <tr>
-        <th>ID</th>
         <th>Author</th>
         <th>Email</th>
         <th>Body</th>
         <th>Created</th>
         <th>Updated</th>
         <th>View</th>
-        <th>Replies</th>
         <th>Approval</th>
         <th>Action</th>
       </tr>
     </thead>
     <tbody>
-
-            @foreach($comments as $comment)
+        @foreach($comments as $comment)
       <tr>
-        <td>{{$comment->id}}</td>
         <td>{{$comment->author}}</td>
         <td>{{$comment->email}}</td>
         <td>{{$comment->body}}</td>
         <td>{{$comment->created_at->diffForHumans()}}</td>
         <td>{{$comment->updated_at->diffForHumans()}}</td>
         <td><a href="{{ route('post', $comment->post->id) }}">View Post</a></td>
-        <td><a href="{{ route('admin.comment.replies.show', $comment->id) }}">View Replies</a></td>
-        <td><a href="{{ route('admin.comments.show', $comment->id) }}">View Comment</a></td>
         <td>
             
             @if($comment->is_active == 1)
@@ -83,13 +77,17 @@
             </div>
         </td>
       </tr>
-      
-            @endforeach
-     </tbody>
+      @endforeach
+    </tbody>
 
   </table>
 @else
-<h1 class="text-center">No Comments</h1>    
+
+    <h1 class="text-center">No Comments</h1>  
+    
 @endif
+
+  
+
 
 @stop

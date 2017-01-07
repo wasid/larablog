@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Session;
 
 use App\Comment;
 
+use App\Post;
+
 use Auth;
 
 class PostCommentsController extends Controller
@@ -73,7 +75,10 @@ class PostCommentsController extends Controller
      */
     public function show($id)
     {
-        //
+        $post = Post::findOrFail($id);
+        $comments = $post->comments;
+        
+        return view('admin.comments.show', compact('comments'));
     }
 
     /**
@@ -111,9 +116,9 @@ class PostCommentsController extends Controller
      */
     public function destroy($id)
     {
-         Comment::findOrFail($id)->delete();
+        Comment::findOrFail($id)->delete();
          
-         Session::flash('alert-danger', 'Comment Successfully Deleted!');
+        Session::flash('alert-danger', 'Comment Successfully Deleted!');
         
         return redirect()->back();
     }
