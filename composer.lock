@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "f12b598e0890fe6f584effcddc286d0c",
-    "content-hash": "7ded4a4b7b88df9816f34d4b615328eb",
+    "hash": "d5b36aa953587a5aa74081c2e605bc0a",
+    "content-hash": "3fb884edae3f7c0a1ec7465c915af95f",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -127,24 +127,24 @@
         },
         {
             "name": "cviebrock/eloquent-sluggable",
-            "version": "4.0.4",
+            "version": "4.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cviebrock/eloquent-sluggable.git",
-                "reference": "ef8d2a1eed190ea2f78d47ac92a4500b50ffbd54"
+                "reference": "20e78e7cc68facc934034024daf1fbaae7ce0c90"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cviebrock/eloquent-sluggable/zipball/ef8d2a1eed190ea2f78d47ac92a4500b50ffbd54",
-                "reference": "ef8d2a1eed190ea2f78d47ac92a4500b50ffbd54",
+                "url": "https://api.github.com/repos/cviebrock/eloquent-sluggable/zipball/20e78e7cc68facc934034024daf1fbaae7ce0c90",
+                "reference": "20e78e7cc68facc934034024daf1fbaae7ce0c90",
                 "shasum": ""
             },
             "require": {
-                "cocur/slugify": "^2.1",
+                "cocur/slugify": "^2.3",
                 "illuminate/config": "5.1.* || 5.2.* || 5.3.*",
                 "illuminate/database": "5.1.* || 5.2.* || 5.3.*",
                 "illuminate/support": "5.1.* || 5.2.* || 5.3.*",
-                "php": "^5.5.9 || ^7.0"
+                "php": "^5.6 || ^7.0"
             },
             "require-dev": {
                 "mockery/mockery": "^0.9.4",
@@ -174,7 +174,7 @@
                 "laravel",
                 "slug"
             ],
-            "time": "2016-09-13 17:20:31"
+            "time": "2016-11-09 15:42:49"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -1314,7 +1314,7 @@
         },
         {
             "name": "symfony/event-dispatcher",
-            "version": "v3.2.3",
+            "version": "v3.2.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/event-dispatcher.git",
@@ -3301,16 +3301,16 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v3.2.3",
+            "version": "v3.2.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "e1718c6bf57e1efbb8793ada951584b2ab27775b"
+                "reference": "9724c684646fcb5387d579b4bfaa63ee0b0c64c8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/e1718c6bf57e1efbb8793ada951584b2ab27775b",
-                "reference": "e1718c6bf57e1efbb8793ada951584b2ab27775b",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/9724c684646fcb5387d579b4bfaa63ee0b0c64c8",
+                "reference": "9724c684646fcb5387d579b4bfaa63ee0b0c64c8",
                 "shasum": ""
             },
             "require": {
@@ -3352,7 +3352,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2017-01-21 17:06:35"
+            "time": "2017-02-16 22:46:52"
         },
         {
             "name": "webmozart/assert",
